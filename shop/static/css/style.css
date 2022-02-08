@@ -1,0 +1,21 @@
+body{
+    background-color: #5CDB95;
+    /* maybe change this font */
+    font-family: sans-serif;
+}
+h1 {
+    color: whitesmoke;
+}
+p{
+    color: #05286B;
+}
+
+/* error messaging */
+.main_heading{
+    text-align: center;
+}
+
+.flash{
+    color: red;
+}
+/* I NEED TO EDIT THE LOOK OF MY HORIZONTAL RULES (THE HORIZONTAL LINE) */

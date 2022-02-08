@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1 class="main_heading">Product Page</h1>
+<p>Click on the image to find out more information about the fruit.</p>
+<label for="sort">Sort By</label>
+
+<form action="{{ url_for('product') }}" method="GET" novalidate>
+    <select name="sort" onchange="submit()">
+        <option value="price" {% if sort_value == "price" %} selected {% endif %}>Price</option>
+        <option value="alphabetical order" {% if sort_value == "alphabetical order" %} selected {% endif %}>Alphabetical Order</option>
+        <option value="weight" {% if sort_value =="weight" %} selected {% endif %}>Weight</option>
+    </select>
+</form>
+{% for product in products %}
+<div>
+    <hr>
+    <h3>{{ product.product_name }}</h3>
+    <p> <b>Price: </b> £{{ product.price }}</p>
+    <p> <b>Weight: </b> {{ product.weight }} grams</p>
+    <br>
+    <img src="{{ url_for('static', filename='img/' + product.image_file) }}" alt="image not loading">
+    <br>
+    <br>
+    <a href="{{ url_for('product_page', product_name=product.product_name) }}"><button type="button">Product Page</button></a>
+</div>
+{% endfor %}
+{% endblock %}

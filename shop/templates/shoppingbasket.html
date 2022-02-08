@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1 class="main_heading">Shopping Basket</h1>
+{% for item in items %}
+<img src="{{ url_for('static', filename='img/' + item.product.image_file) }}" alt="">
+<p>{{ item.product.product_name }}</p>
+<p>{{ item.product.price }}</p>
+
+<button type="button">Remove Item from Shopping Basket</button>
+<hr>
+{% endfor %}
+<p>total cost: {{ total}}</p>
+<!-- here i need to put the total cost -->
+<button type="button">Buy Now</button>
+{% endblock %}

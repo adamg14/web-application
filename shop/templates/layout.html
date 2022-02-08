@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+        {% if title %}
+        <title>{{ title }} - Adam's Online Fruit Shop</title>
+        {% else %}
+        <title>Welcome to Adam's Online Fruit Shop</title>
+        {% endif %}
+    </head>
+
+    <body>
+        <div>
+            Online Shop: 
+            <a href="{{ url_for('home') }}">Home</a>
+            <!-- if the user is not logged in -->
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('login') }}">Log In</a>
+            <a href="{{ url_for('register') }}">Register</a>
+            {% else %}
+            <a href="{{ url_for('product') }}">Products</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+            <a href="{{ url_for('shoppingbasket')}}">ShoppingBasket</a>
+            <a href="{{ url_for('checkout') }}">Checkout</a>
+            {% endif %}
+        </div>
+        <!-- add a horizontal divide if it looks better -->
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <p class="flash">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
